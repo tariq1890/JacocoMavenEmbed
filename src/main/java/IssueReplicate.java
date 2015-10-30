@@ -10,7 +10,7 @@ public class IssueReplicate {
 
     public static void main(String args[]) {
         String projectPath = System.getProperty("user.dir");
-        System.setProperty("-Dmaven.multiModuleProjectDirectory", projectPath);
+        System.setProperty("maven.multiModuleProjectDirectory", projectPath);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream out = new PrintStream(baos);
         MavenCli mavenCli = new MavenCli();
