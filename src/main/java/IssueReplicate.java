@@ -17,8 +17,8 @@ public class IssueReplicate {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream out = new PrintStream(baos);
         MavenCli mavenCli = new MavenCli();
-        Path path = Paths.get(IAgent.class.getProtectionDomain().getCodeSource().getLocation().getPath().substring(1));
-        System.out.print(path.getFileName().toString());
+        System.out.println("JAR File Path :   " + JARPathUtil.getJARPathString(IAgent.class));
+        System.out.println("JAR File Name :   " + JARPathUtil.getJARFileName(IAgent.class));
         mavenCli.doMain(new String[] {"install"}, projectPath, out, out);
         out.close();
         System.out.print(baos.toString());
