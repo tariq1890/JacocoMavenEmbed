@@ -14,6 +14,8 @@ public class IssueReplicate {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream out = new PrintStream(baos);
         MavenCli mavenCli = new MavenCli();
+        String path = MavenCli.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+        System.out.print(path);
         mavenCli.doMain(new String[] {"install"}, projectPath, out, out);
         out.close();
         System.out.print(baos.toString());
