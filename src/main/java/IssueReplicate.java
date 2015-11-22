@@ -1,7 +1,10 @@
 import org.apache.maven.cli.MavenCli;
+import org.jacoco.agent.rt.IAgent;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * Created by tariq.ibrahim on 29-10-2015.
@@ -14,8 +17,8 @@ public class IssueReplicate {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream out = new PrintStream(baos);
         MavenCli mavenCli = new MavenCli();
-        String path = MavenCli.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-        System.out.print(path);
+        Path path = Paths.get(IAgent.class.getProtectionDomain().getCodeSource().getLocation().getPath().substring(1));
+        System.out.print(path.getFileName().toString());
         mavenCli.doMain(new String[] {"install"}, projectPath, out, out);
         out.close();
         System.out.print(baos.toString());
